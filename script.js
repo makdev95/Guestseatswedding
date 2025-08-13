@@ -9,9 +9,11 @@ const firebaseConfig = {
     measurementId: "G-C5CHGR12KR"
 };
 
+  // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore(app);
 const auth = firebase.auth(app);
+const analytics = getAnalytics(app);
 
 // Guest View Logic
 if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
@@ -128,4 +130,5 @@ if (window.location.pathname.includes('admin.html')) {
             loadGuests();
         }
     });
+
 }
