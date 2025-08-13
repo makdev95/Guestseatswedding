@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    overflow: hidden;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #E2725B 0%, #D2691E 50%, #A0522D 100%);
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    z-index: 2;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.title {
+    font-family: 'Great Vibes', cursive;
+    color: #8B4513;
+    font-size: 60px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.heart {
+    color: #E2725B;
+    font-size: 50px;
+    animation: pulse 1.5s infinite;
+}
+
+.subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #A0522D;
+    margin-bottom: 30px;
+}
+
+.table-card {
+    background: linear-gradient(45deg, #E2725B, #F4A460);
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    font-size: 28px;
+    font-family: 'Playfair Display', serif;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.table-card:hover {
+    transform: scale(1.05);
+}
+
+.table-card p {
+    margin: 10px 0;
+}
+
+.flourish {
+    margin-top: 20px;
+    width: 100%;
+    height: 2px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10"><path d="M0 5 Q25 0 50 5 T100 5" stroke="%238B4513" stroke-width="1" fill="none"/></svg>') repeat-x;
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particles::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    animation: confetti 5s infinite linear;
+    opacity: 0.5;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes confetti {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+/* Admin styles remain similar, but inherit some base */
+#login-form, #admin-content {
+    animation: fadeIn 1s ease-out;
+}
+
+input, button {
+    margin: 10px;
+    padding: 12px;
+    border: 1px solid #E2725B;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus, button:focus {
+    border-color: #8B4513;
+}
+
+button {
+    background: #8B4513;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #E2725B;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #F5F5F5;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.qr-code {
+    margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 40px;
+    }
+    .subtitle {
+        font-size: 18px;
+    }
+    .table-card {
+        font-size: 22px;
+    }
+}
