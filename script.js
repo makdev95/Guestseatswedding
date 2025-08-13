@@ -50,6 +50,7 @@ if (window.location.pathname.includes('admin.html')) {
         auth.signInWithEmailAndPassword(email, password).then(user => {
             document.getElementById('login-form').style.display = 'none';
             document.getElementById('admin-content').style.display = 'block';
+            document.getElementById('login-btn').addEventListener('click', login);
             loadGuests();
         }).catch(error => {
             alert('Login failed: ' + error.message);
@@ -136,4 +137,5 @@ if (window.location.pathname.includes('admin.html')) {
     });
 
 }
+
 
