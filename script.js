@@ -1,28 +1,104 @@
 // Hardcoded admin credentials (change before deployment!)
 const ADMIN_CREDENTIALS = {
     email: 'makdev47@gmail.com',
-    password: 'M@kdev95'
+    password: 'sara95'
 };
 
-// Generate unique ID from name+table
+// Hardcoded trivia questions (customize as needed)
+const triviaQuestions = [
+    {
+        question: "Where did Sara and Devilliers first meet?",
+        options: ["At a coffee shop", "Through friends", "At work", "Online"],
+        answer: 1 // Index of correct answer (0-based)
+    },
+    {
+        question: "What is Sara's favorite flower?",
+        options: ["Rose", "Lily", "Tulip", "Daisy"],
+        answer: 0
+    },
+    {
+        question: "What is Devilliers' hobby?",
+        options: ["Painting", "Hiking", "Cooking", "Reading"],
+        answer: 1
+    },
+    {
+        question: "How many years have they been together?",
+        options: ["2", "4", "6", "8"],
+        answer: 2
+    },
+    {
+        question: "What is their dream vacation spot?",
+        options: ["Paris", "Bali", "New York", "Tokyo"],
+        answer: 1
+    }
+];
+
+// Generate unique ID by encoding name|table in base64
 function generateId(name, table) {
-    return btoa(name + table).slice(0, 10); // Simple base64 hash, truncated
+    const combined = name + '|' + table;
+    return btoa(combined);
 }
 
-// Guest View Logic
+// Guest View Logic: Decode the ID to get name and table directly
 const urlParams = new URLSearchParams(window.location.search);
 const guestId = urlParams.get('id');
 if (guestId) {
-    const guests = JSON.parse(localStorage.getItem('guests') || '[]');
-    const guest = guests.find(function(g) { return generateId(g.name, g.table) === guestId; });
     const tableInfo = document.getElementById('table-info');
-    if (guest) {
-        tableInfo.innerHTML = '<p>Hello, ' + guest.name + '!</p><p>You are seated at: <strong>' + guest.table + '</strong></p>';
-    } else {
+    try {
+        const decoded = atob(guestId);
+        const [name, table] = decoded.split('|');
+        if (name && table) {
+            tableInfo.innerHTML = '<p>Hello, ' + name + '!</p><p>You are seated at: <strong>' + table + '</strong></p>';
+            document.getElementById('game-section').style.display = 'block'; // Show game after table info
+        } else {
+            tableInfo.innerHTML = 'Guest not found. Please check your link.';
+        }
+    } catch (e) {
         tableInfo.innerHTML = 'Guest not found. Please check your link.';
     }
 } else {
     document.getElementById('table-info').innerHTML = 'Welcome! Please use your unique link.';
+}
+
+// Trivia Game Logic
+let currentQuestion = 0;
+let score = 0;
+
+function startGame() {
+    currentQuestion = 0;
+    score = 0;
+    showQuestion();
+}
+
+function showQuestion() {
+    const quizDiv = document.getElementById('quiz');
+    const scoreDiv = document.getElementById('score');
+    scoreDiv.innerHTML = '';
+    if (currentQuestion < triviaQuestions.length) {
+        const q = triviaQuestions[currentQuestion];
+        quizDiv.innerHTML = '<p>' + q.question + '</p>';
+        q.options.forEach(function(option, index) {
+            const btn = document.createElement('button');
+            btn.textContent = option;
+            btn.onclick = function() { checkAnswer(index); };
+            quizDiv.appendChild(btn);
+        });
+    } else {
+        quizDiv.innerHTML = '';
+        scoreDiv.innerHTML = 'Your score: ' + score + '/' + triviaQuestions.length;
+    }
+}
+
+function checkAnswer(selected) {
+    const q = triviaQuestions[currentQuestion];
+    if (selected === q.answer) {
+        score++;
+        alert('Correct!');
+    } else {
+        alert('Wrong! The correct answer is ' + q.options[q.answer]);
+    }
+    currentQuestion++;
+    showQuestion();
 }
 
 // Admin Modal Logic
@@ -79,6 +155,7 @@ function loadGuests() {
         const li = document.createElement('li');
         li.innerHTML = guest.name + ' - ' + guest.table +
             '<button onclick="deleteGuest(\'' + id + '\')">Delete</button>' +
+            '<a href="' + window.location.origin + '/?id=' + id + '" target="_blank">Share Link</a>' +
             '<div class="qr-code" id="qr-' + id + '"></div>';
         guestList.appendChild(li);
         new QRCode(document.getElementById('qr-' + id), {
@@ -112,3 +189,4 @@ window.adminLogin = adminLogin;
 window.logout = logout;
 window.loadCSV = loadCSV;
 window.deleteGuest = deleteGuest;
+window.startGame = startGame;
