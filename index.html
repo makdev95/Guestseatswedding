@@ -49,25 +49,30 @@
 
 // Hardcoded admin credentials (change before deployment!)
 const ADMIN_CREDENTIALS = {
-    email: 'makdev47@gmail.com',
-    password: 'M@kdev95'
+    email: 'admin@wedding.com',
+    password: 'sara_dev_2025'
 };
 
-// Generate unique ID from name+table
+// Generate unique ID by encoding name|table in base64
 function generateId(name, table) {
-    return btoa(name + table).slice(0, 10); // Simple base64 hash, truncated
+    const combined = name + '|' + table;
+    return btoa(combined);
 }
 
-// Guest View Logic
+// Guest View Logic: Decode the ID to get name and table directly
 const urlParams = new URLSearchParams(window.location.search);
 const guestId = urlParams.get('id');
 if (guestId) {
-    const guests = JSON.parse(localStorage.getItem('guests') || '[]');
-    const guest = guests.find(function(g) { return generateId(g.name, g.table) === guestId; });
     const tableInfo = document.getElementById('table-info');
-    if (guest) {
-        tableInfo.innerHTML = '<p>Hello, ' + guest.name + '!</p><p>You are seated at: <strong>' + guest.table + '</strong></p>';
-    } else {
+    try {
+        const decoded = atob(guestId);
+        const [name, table] = decoded.split('|');
+        if (name && table) {
+            tableInfo.innerHTML = '<p>Hello, ' + name + '!</p><p>You are seated at: <strong>' + table + '</strong></p>';
+        } else {
+            tableInfo.innerHTML = 'Guest not found. Please check your link.';
+        }
+    } catch (e) {
         tableInfo.innerHTML = 'Guest not found. Please check your link.';
     }
 } else {
@@ -165,4 +170,5 @@ window.deleteGuest = deleteGuest;
 </script>
 
 </body>
+
 </html>
