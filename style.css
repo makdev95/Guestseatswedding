@@ -267,3 +267,188 @@ li {
     font-size: 20px;
     color: #8B4513;
 }
+
+.guest-table-wrapper {
+    max-height: 300px; /* Adjust height as needed for scrolling */
+    overflow-y: auto;
+    border: 1px solid #E2725B;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+#guest-table {
+    width: 100%;
+    border-collapse: collapse;
+    cursor: pointer; /* Changes cursor to pointer for interactivity */
+}
+
+#guest-table th, #guest-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#guest-table th {
+    background: #E2725B;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+#guest-table tbody tr:hover {
+    background: #F5F5F5;
+}
+
+.qr-code {
+    display: inline-block;
+}
+
+#game-section {
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#quiz {
+    margin: 20px 0;
+}
+
+#quiz button {
+    margin: 5px;
+    padding: 10px;
+    background: #E2725B;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#quiz button:hover {
+    background: #8B4513;
+}
+
+#score {
+    font-size: 20px;
+    color: #8B4513;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    overflow: auto; /* Changed from hidden to auto to allow page scrolling when content exceeds viewport */
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh; /* Changed to min-height to allow expansion if needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #E2725B 0%, #D2691E 50%, #A0522D 100%);
+    overflow: hidden; /* Keep hidden for hero effects */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 3;
+    overflow-y: auto; /* Allow scrolling if modal content exceeds viewport */
+}
+
+.modal-content {
+    background: white;
+    margin: 5% auto; /* Reduced margin for more space */
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.5s ease-out;
+    max-height: 90vh; /* Limit height and allow internal scroll */
+    overflow-y: auto;
+}
+
+.guest-table-wrapper {
+    max-height: 300px; /* Adjust height as needed for scrolling */
+    overflow-y: auto;
+    border: 1px solid #E2725B;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+#guest-table {
+    width: 100%;
+    border-collapse: collapse;
+    cursor: pointer; /* Changes cursor to pointer for interactivity */
+}
+
+#guest-table th, #guest-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#guest-table th {
+    background: #E2725B;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+#guest-table tbody tr:hover {
+    background: #F5F5F5;
+}
+
+.qr-code {
+    display: inline-block;
+}
+
+#game-section {
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#quiz {
+    margin: 20px 0;
+}
+
+#quiz button {
+    margin: 5px;
+    padding: 10px;
+    background: #E2725B;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#quiz button:hover {
+    background: #8B4513;
+}
+
+#score {
+    font-size: 20px;
+    color: #8B4513;
+}
+
+/* Media query for better mobile scrolling */
+@media (max-width: 600px) {
+    .modal-content {
+        margin: 2% auto;
+        max-height: 95vh;
+    }
+}
