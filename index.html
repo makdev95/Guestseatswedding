@@ -68,15 +68,15 @@ if (guestId) {
         const decoded = atob(guestId);
         const [name, table] = decoded.split('|');
         if (name && table) {
-            tableInfo.innerHTML = '<p>Hello, ' + name + '!</p><p>You are seated at: <strong>' + table + '</strong></p>';
+            tableInfo.innerHTML = '<p>Hello, ' + name + '!</p><p>Vous êtes assis à la : <strong>' + table + '</strong></p>';
         } else {
-            tableInfo.innerHTML = 'Guest not found. Please check your link.';
+            tableInfo.innerHTML = 'Invité introuvable. Veuillez vérifier votre lien.';
         }
     } catch (e) {
-        tableInfo.innerHTML = 'Guest not found. Please check your link.';
+        tableInfo.innerHTML = 'Invité introuvable. Veuillez vérifier votre lien.';
     }
 } else {
-    document.getElementById('table-info').innerHTML = 'Welcome! Please use your unique link.';
+    document.getElementById('table-info').innerHTML = 'Bienvenue ! Veuillez utiliser votre lien unique..';
 }
 
 // Admin Modal Logic
@@ -172,3 +172,4 @@ window.deleteGuest = deleteGuest;
 </body>
 
 </html>
+
