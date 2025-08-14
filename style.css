@@ -236,3 +236,34 @@ li {
     .subtitle { font-size: 20px; }
     .table-card { font-size: 24px; }
 }
+
+#game-section {
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#quiz {
+    margin: 20px 0;
+}
+
+#quiz button {
+    margin: 5px;
+    padding: 10px;
+    background: #E2725B;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#quiz button:hover {
+    background: #8B4513;
+}
+
+#score {
+    font-size: 20px;
+    color: #8B4513;
+}
