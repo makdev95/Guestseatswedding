@@ -7,29 +7,29 @@ const ADMIN_CREDENTIALS = {
 // Hardcoded trivia questions (customize as needed)
 const triviaQuestions = [
     {
-        question: "Where did Sara and Devilliers first meet?",
-        options: ["At a coffee shop", "Through friends", "At work", "Online"],
-        answer: 1 // Index of correct answer (0-based)
+        question: "Sarah et Devilliers ont combien d'enfants🤩 ?",
+        options: ["10", "3", "0", "1"],
+        answer: 3 // Index of correct answer (0-based)
     },
     {
-        question: "What is Sara's favorite flower?",
-        options: ["Rose", "Lily", "Tulip", "Daisy"],
-        answer: 0
-    },
-    {
-        question: "What is Devilliers' hobby?",
-        options: ["Painting", "Hiking", "Cooking", "Reading"],
+        question: "Qui est le plus tetu(e) 🤦‍♂️ ?",
+        options: ["Sarah", "Devilliers", "Les deux"],
         answer: 1
     },
     {
-        question: "How many years have they been together?",
-        options: ["2", "4", "6", "8"],
+        question: "Qui est le plus gourmand (e) 🤣 ?",
+        options: ["Devilliers", "Sarah", "Les deux", "Personne"],
+        answer: 3
+    },
+    {
+        question: "Depuis combien d'années sont-ils ensemble 😊?",
+        options: ["2", "4", "5", "7"],
         answer: 2
     },
     {
-        question: "What is their dream vacation spot?",
-        options: ["Paris", "Bali", "New York", "Tokyo"],
-        answer: 1
+        question: "Comment s'appelle leur premiere fille 😁?",
+        options: ["Dev Kimya", "Kimya", "Mak Dev", "Dev"],
+        answer: 0
     }
 ];
 
@@ -190,3 +190,4 @@ window.logout = logout;
 window.loadCSV = loadCSV;
 window.deleteGuest = deleteGuest;
 window.startGame = startGame;
+
