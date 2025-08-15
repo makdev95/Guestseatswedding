@@ -85,7 +85,7 @@ function showQuestion() {
         });
     } else {
         quizDiv.innerHTML = '';
-        scoreDiv.innerHTML = 'Your score: ' + score + '/' + triviaQuestions.length;
+        scoreDiv.innerHTML = 'Voici ton score et profite de la soirée : ' + score + '/' + triviaQuestions.length;
     }
 }
 
@@ -190,5 +190,6 @@ window.logout = logout;
 window.loadCSV = loadCSV;
 window.deleteGuest = deleteGuest;
 window.startGame = startGame;
+
 
 
