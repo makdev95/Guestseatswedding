@@ -48,16 +48,16 @@ if (guestId) {
         const decoded = atob(guestId);
         const [name, table] = decoded.split('|');
         if (name && table) {
-            tableInfo.innerHTML = '<p>Hello, ' + name + '!</p><p>You are seated at: <strong>' + table + '</strong></p>';
+            tableInfo.innerHTML = '<p>Hello, ' + name + '!</p><p>Vous êtes assis(e) à la: <strong>' + table + '</strong></p>';
             document.getElementById('game-section').style.display = 'block'; // Show game after table info
         } else {
-            tableInfo.innerHTML = 'Guest not found. Please check your link.';
+            tableInfo.innerHTML = 'Invité introuvable. Veuillez vérifier votre lien.';
         }
     } catch (e) {
-        tableInfo.innerHTML = 'Guest not found. Please check your link.';
+        tableInfo.innerHTML = 'Invité introuvable. Veuillez vérifier votre lien.';
     }
 } else {
-    document.getElementById('table-info').innerHTML = 'Welcome! Please use your unique link.';
+    document.getElementById('table-info').innerHTML = 'Bienvenue ! Veuillez utiliser votre lien unique.';
 }
 
 // Trivia Game Logic
@@ -93,9 +93,9 @@ function checkAnswer(selected) {
     const q = triviaQuestions[currentQuestion];
     if (selected === q.answer) {
         score++;
-        alert('Correct!');
+        alert('Mmm tu nous connais hein 🤣!');
     } else {
-        alert('Wrong! The correct answer is ' + q.options[q.answer]);
+        alert('Haha faux ! La bonne réponse est ' + q.options[q.answer]);
     }
     currentQuestion++;
     showQuestion();
@@ -190,4 +190,5 @@ window.logout = logout;
 window.loadCSV = loadCSV;
 window.deleteGuest = deleteGuest;
 window.startGame = startGame;
+
 
