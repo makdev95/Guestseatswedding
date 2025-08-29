@@ -48,8 +48,11 @@ if (guestId) {
         const decoded = atob(guestId);
         const [name, table] = decoded.split('|');
         if (name && table) {
-            tableInfo.innerHTML = '<p>Hello, ' + name + '!</p><p>Vous êtes assis(e) à la: <strong>' + table + '</strong></p>';
-            tableInfo.innerHTML = '<p>Adresse : Prestige Events - Mpita Av Tchicaya UTamsi, Ref : Gendarmerie</p>';
+            //tableInfo.innerHTML = '<p>Hello, ' + name + '!</p><p>Vous êtes assis(e) à la: <strong>' + table + '</strong></p>';
+            tableInfo.innerHTML = '<p>Hello, ' + name + '!</p>' +
+                      '<p>Vous êtes assis(e) à la: <strong>' + table + '</strong></p>' +
+                      '<p><small>Adresse : Prestige Events - Mpita Av Tchicaya UTamsi, Ref : Gendarmerie</small></p>';
+
             document.getElementById('game-section').style.display = 'block'; // Show game after table info
         } else {
             tableInfo.innerHTML = 'Invité introuvable. Veuillez vérifier votre lien.';
@@ -191,6 +194,7 @@ window.logout = logout;
 window.loadCSV = loadCSV;
 window.deleteGuest = deleteGuest;
 window.startGame = startGame;
+
 
 
 
